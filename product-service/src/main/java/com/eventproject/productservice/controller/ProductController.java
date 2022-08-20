@@ -1,5 +1,6 @@
 package com.eventproject.productservice.controller;
 
+import com.eventproject.productservice.dto.ProductRequest;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -7,8 +8,8 @@ import org.springframework.web.bind.annotation.*;
 public class ProductController {
 
     @PostMapping
-    public String createProduct() {
-        return "HTTP POST Handler";
+    public String createProduct(@RequestBody ProductRequest product) {
+        return "HTTP POST Handler " + product.getTitle();
     }
 
     @GetMapping
