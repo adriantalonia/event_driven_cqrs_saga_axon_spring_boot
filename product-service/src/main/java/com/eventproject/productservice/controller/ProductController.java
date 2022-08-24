@@ -1,15 +1,41 @@
 package com.eventproject.productservice.controller;
 
+import com.eventproject.productservice.command.CreateProductCommand;
 import com.eventproject.productservice.dto.ProductRequest;
+import lombok.AllArgsConstructor;
+import org.axonframework.commandhandling.gateway.CommandGateway;
+import org.springframework.core.env.Environment;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.UUID;
+
 @RestController
+@AllArgsConstructor
 @RequestMapping("/products")
 public class ProductController {
 
+    private final Environment env;
+    private final CommandGateway commandGateway;
+
+
     @PostMapping
     public String createProduct(@RequestBody ProductRequest product) {
-        return "HTTP POST Handler " + product.getTitle();
+
+        CreateProductCommand createProductCommand = CreateProductCommand.builder()
+                .price(product.getPrice())
+                .quantity(product.getQuantity())
+                .title(product.getTitle())
+                .productId(UUID.randomUUID().toString()).build();
+
+        String returnValue;
+
+        try {
+            returnValue = commandGateway.sendAndWait(createProductCommand);
+        } catch (Exception ex) {
+            returnValue = ex.getLocalizedMessage();
+        }
+
+        return "HTTP POST Handler " + returnValue;
     }
 
     @GetMapping
