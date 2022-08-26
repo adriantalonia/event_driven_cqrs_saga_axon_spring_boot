@@ -1,4 +1,4 @@
-package com.eventproject.productservice.dto;
+package com.eventproject.productservice.core.model.dto;
 
 import lombok.Data;
 

@@ -1,7 +1,7 @@
 package com.eventproject.productservice.controller;
 
 import com.eventproject.productservice.command.CreateProductCommand;
-import com.eventproject.productservice.dto.ProductRequest;
+import com.eventproject.productservice.core.model.dto.ProductRequest;
 import lombok.AllArgsConstructor;
 import org.axonframework.commandhandling.gateway.CommandGateway;
 import org.springframework.core.env.Environment;
