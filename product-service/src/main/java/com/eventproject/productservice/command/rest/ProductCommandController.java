@@ -1,4 +1,4 @@
-package com.eventproject.productservice.controller;
+package com.eventproject.productservice.command.rest;
 
 import com.eventproject.productservice.command.CreateProductCommand;
 import com.eventproject.productservice.core.model.dto.ProductRequest;
@@ -12,7 +12,7 @@ import java.util.UUID;
 @RestController
 @AllArgsConstructor
 @RequestMapping("/products")
-public class ProductController {
+public class ProductCommandController {
 
     private final Environment env;
     private final CommandGateway commandGateway;
