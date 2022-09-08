@@ -35,10 +35,10 @@ public class ProductCommandController {
             returnValue = ex.getLocalizedMessage();
         }
 
-        return "HTTP POST Handler " + returnValue;
+        return returnValue;
     }
 
-    @GetMapping
+   /* @GetMapping
     public String getProduct() {
         return "HTTP GET Handler";
     }
@@ -51,5 +51,5 @@ public class ProductCommandController {
     @DeleteMapping
     public String deleteProduct() {
         return "HTTP Delete Handler";
-    }
+    }*/
 }
