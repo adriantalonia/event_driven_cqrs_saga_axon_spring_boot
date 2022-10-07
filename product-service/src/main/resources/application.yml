@@ -14,6 +14,9 @@ spring:
     console:
       enabled: true
 server:
+  error:
+    include-message: always
+    include-binding-errors: always
   port: ${PORT:0}
 
 eureka:
